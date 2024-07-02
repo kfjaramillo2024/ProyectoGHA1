@@ -1,35 +1,35 @@
-# This is a basic workflow to help you get started with Actions
-
+# archivo de configuración para GitHub Actions
+# nombre del workflow
 name: DevOps
 
-# Controls when the workflow will run
+# controles cuando el workflow corra
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
+  # Triggers cuando haya un push o una solicitud de pull request en la rama "main" 
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
-  # Allows you to run this workflow manually from the Actions tab
+  # Permite que el workflow se ejecute manualmente desde la pestaña de Actions en GitHub
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+
 jobs:
-  # This workflow contains a single job called "build"
+  # Este workflow contiene un job llamado "build"
   build:
-    # The type of runner that the job will run on
+    # Este job se ejecutará en un runner con el sistema operativo Ubuntu (la última versión disponible)
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
+    # Tareas individuales que se ejecutaran en el job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      # Clona el repositorio en el runner para que los siguientes steps tengan acceso al código
       - uses: actions/checkout@v4
 
-      # Runs a single command using the runners shell
+      # Ejecuta el comando echo Prueba, CI, que simplemente imprime "Prueba, CI" en la consola
       - name: Run a one-line script
-        run: echo Hello, world!
+        run: echo Prueba, CI
 
-      # Runs a set of commands using the runners shell
+      # Ejecuta dos comandos echo en secuencia. El primer comando imprime "Add other actions to build," y el segundo imprime "test, and deploy your project." en la consola
       - name: Run a multi-line script
         run: |
           echo Add other actions to build,
